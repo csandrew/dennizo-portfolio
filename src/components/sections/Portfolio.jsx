@@ -17,6 +17,21 @@ const works = [
     title: 'Festival Show',
     subtitle: 'High-energy performance at a live festival',
     details: 'Audience hype, introductions, and show pacing.'
+  },
+  {
+    title: 'Charity Gala',
+    subtitle: 'Benefiting local community initiatives',
+    details: 'Hosted a successful charity event to raise funds for underprivileged children.'
+  },
+  {
+    title: 'Community Event',
+    subtitle: 'Local community celebration',
+    details: 'Organized and hosted a community event to bring people together and promote unity.'
+  },
+  {
+    title: 'Corporate Event',
+    subtitle: 'Annual company conference',
+    details: 'Managed the event from planning to execution, ensuring a seamless experience for all attendees.'
   }
 ]
 

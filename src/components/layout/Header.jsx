@@ -33,7 +33,7 @@ const Header = () => {
           {/* Logo - Left */}
           <Link to="/" className="flex items-center flex-shrink-0">
             <span className="text-2xl font-display text-primary font-bold">
-              DENNIZO<span className="text-pink_orchid">.</span>
+              DENNIZOCLASSIC<span className="text-primary">.</span>
             </span>
           </Link>
 
@@ -86,7 +86,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block py-2.5 px-4 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
+                className="block py-2.5 px-4 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-primary hover:bg-gray-200 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

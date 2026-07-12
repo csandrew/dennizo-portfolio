@@ -1,4 +1,4 @@
-﻿import React from 'react'
+﻿import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -6,19 +6,34 @@ import {
   faTiktok,
   faYoutube,
   faFacebook,
-  faTwitter,
-  faSpotify,
-  faSoundcloud
+  faSpotify
 } from '@fortawesome/free-brands-svg-icons'
 import {
   faPhone,
   faEnvelope,
   faLocationDot,
-  faHeart
+  faHeart,
+  faEnvelopeOpen
 } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle')
+
+  const handleSubscribe = (e) => {
+    e.preventDefault()
+    if (!email) return
+    
+    setStatus('submitting')
+    
+    // Simulate API call
+    setTimeout(() => {
+      setStatus('success')
+      setEmail('')
+      setTimeout(() => setStatus('idle'), 3000)
+    }, 1000)
+  }
 
   const socialLinks = [
     {
@@ -45,14 +60,12 @@ const Footer = () => {
       url: 'https://facebook.com/dennizoclassic',
       color: '#1877F2'
     },
-
     {
       name: 'Spotify',
       icon: faSpotify,
       url: 'https://spotify.com/dennizoclassic',
       color: '#1DB954'
     },
-
   ]
 
   const quickLinks = [
@@ -75,7 +88,7 @@ const Footer = () => {
       style={{ backgroundColor: '#3C3B6E' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-4 gap-10">
           {/* Brand Section */}
           <div className="md:col-span-1">
             <h3 className="text-3xl font-display mb-4">
@@ -83,7 +96,7 @@ const Footer = () => {
               <span className="text-pink_orchid">.</span>
             </h3>
             <p className="text-white/60 text-sm leading-relaxed">
-              Professional MC & Entertainer<br />
+              Gospel Artist | Music Director | Professional MC<br />
               Creating unforgettable moments<br />
               across Kenya and beyond.
             </p>
@@ -108,6 +121,46 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Newsletter Section */}
+          <div>
+            <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
+              Weekly Inspiration
+            </h4>
+            <p className="text-white/60 text-sm mb-4">
+              Subscribe to receive weekly inspiration from Dennizo.
+            </p>
+            
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <div className="flex flex-col gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="px-4 py-2.5 rounded-lg text-gray-800 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-pink_orchid transition-colors w-full"
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/80 transition-all disabled:opacity-50 w-full"
+                >
+                  {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </div>
+              
+              {status === 'success' && (
+                <p className="text-green-400 text-sm text-center">
+                  ✅ Subscribed successfully!
+                </p>
+              )}
+            </form>
+            
+          {/*<p className="text-white/40 text-xs mt-3">
+              ✝️ Weekly inspiration delivered to your inbox
+            </p> */}
+          </div>
+
           {/* Contact Info */}
           <div>
             <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
@@ -115,16 +168,14 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
-                <FontAwesomeIcon icon={faPhone} className="text-pink_orchid w-4" />
+                <FontAwesomeIcon icon={faPhone} className="text-gray-400 w-4" />
                 <a href="tel:+254700000000">+254 700 000 000</a>
               </li>
               <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
-                <FontAwesomeIcon icon={faEnvelope} className="text-pink_orchid w-4" />
+                <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 w-4" />
                 <a href="mailto:info@dennizoclassic.com">info@dennizoclassic.com</a>
               </li>
-            
             </ul>
-
 
             {/* Social Links */}
             <div>
@@ -132,7 +183,7 @@ const Footer = () => {
                 Connect With Me
               </h4>
               
-              <div className="grid grid-cols-5">
+              <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
@@ -150,12 +201,8 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-              
             </div>
-
-
           </div>
-
         </div>
 
         {/* Bottom Bar */}
@@ -168,7 +215,7 @@ const Footer = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-white/40 hover:text-pink_orchid transition-colors text-xs uppercase tracking-wider"
+                className="text-white/40 hover:text-white transition-colors text-xs uppercase tracking-wider"
               >
                 {link.name}
               </Link>
