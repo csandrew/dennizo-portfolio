@@ -54,7 +54,7 @@ const Hero = () => {
             </Link>
 
             <Link
-              to="/portfolio"
+              to="/music"
               className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/40 text-white font-body font-bold uppercase tracking-wider rounded-lg hover:bg-white hover:text-black transition-all"
             >
               ▶ Watch Showreel

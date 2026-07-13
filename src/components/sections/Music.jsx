@@ -6,44 +6,44 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'  // Changed to solid
 
 const Music = () => {
   // Replace these YouTube video IDs with Dennizo's actual videos
-  const videos = [
-    {
-      id: 'dQw4w9WgXcQ', // Replace with actual video ID
-      title: 'Wedding Performance',
-      description: 'Live MC performance at a luxury wedding in Karen, Nairobi',
-      category: 'Wedding'
-    },
-    {
-      id: '9bZkp7q19f0', // Replace with actual video ID
-      title: 'Corporate Event Hosting',
-      description: 'Professional hosting at a corporate gala in Safari Park Hotel',
-      category: 'Corporate'
-    },
-    {
-      id: 'fJ9rUzIMcZQ', // Replace with actual video ID
-      title: 'Concert Opening',
-      description: 'High-energy concert opening at Uhuru Gardens, Nairobi',
-      category: 'Concert'
-    },
-    {
-      id: 'kffacxfA7G4', // Replace with actual video ID
-      title: 'Private Party MC',
-      description: 'Birthday celebration hosting in Westlands, Nairobi',
-      category: 'Private Party'
-    },
-    {
-      id: 'JGwWNGJdvx8', // Replace with actual video ID
-      title: 'Festival Hosting',
-      description: 'MCing at a major music festival in Kenya',
-      category: 'Festival'
-    },
-    {
-      id: 'CevxZvSJLk8', // Replace with actual video ID
-      title: 'Wedding Reception',
-      description: 'Full wedding reception hosting with live music integration',
-      category: 'Wedding'
-    }
-  ]
+const videos = [
+  {
+    id: 'jFiq9IXSQcQ',
+    title: 'Unifunze',
+    description: 'Official lyrics video - Gospel music by Dennizo Classic',
+    category: 'Gospel'
+  },
+  {
+    id: 'PXGkTSX7Kfs',
+    title: 'Mtihani ft Aela Wambui',
+    description: 'Official video - Trending gospel song (Skiza 5371329)',
+    category: 'Gospel'
+  },
+  {
+    id: 'AgdqnlRyS_0',
+    title: 'Auleria Part 1',
+    description: 'Official music audio - Written by Dennizo Classic',
+    category: 'Gospel'
+  },
+  {
+    id: 'UexE32m1fQ8',
+    title: 'Atatenda ft Starhil Patrick',
+    description: 'Official music audio - Multi-language gospel song',
+    category: 'Gospel'
+  },
+  {
+    id: 'ymcVhCqa6kw',
+    title: 'Dennizo Classic - Video 5',
+    description: 'Gospel music video from Dennizo Classic',
+    category: 'Gospel'
+  },
+  {
+    id: 'SeNPX4JbfeM',
+    title: 'Dennizo Classic - Video 6',
+    description: 'Gospel music video from Dennizo Classic',
+    category: 'Gospel'
+  }
+]
 
   return (
     <section className="py-20 bg-gray-300" id="music">
@@ -58,7 +58,7 @@ const Music = () => {
           <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest mb-4">
             Music & Performance
           </span>
-           <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
           <h2 className="text-3xl md:text-4xl font-display text-secondary mt-2 mb-4">
             Sound that sets the stage
           </h2>
@@ -113,7 +113,7 @@ const Music = () => {
                   href={`https://youtube.com/watch?v=${video.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-pink_orchid hover:text-pink_orchid/80 font-semibold text-sm transition-colors"
+                  className="inline-flex items-center gap-2 text-primary hover:text-pink_orchid/80 font-semibold text-sm transition-colors"
                 >
                   <FontAwesomeIcon icon={faPlay} className="text-xs" />
                   Watch on YouTube
@@ -132,7 +132,7 @@ const Music = () => {
           className="text-center mt-12"
         >
           <a
-            href="https://youtube.com/@dennizoclassic"
+            href="https://youtube.com/@dennizoclassickenya1295?si=hVFnbia_Ti6y29d3"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-body font-bold uppercase tracking-wider rounded-lg hover:bg-red-700 transition-colors"

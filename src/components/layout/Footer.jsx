@@ -11,9 +11,7 @@ import {
 import {
   faPhone,
   faEnvelope,
-  faLocationDot,
-  faHeart,
-  faEnvelopeOpen
+  faHeart
 } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
@@ -24,46 +22,52 @@ const Footer = () => {
   const handleSubscribe = (e) => {
     e.preventDefault()
     if (!email) return
-    
+
     setStatus('submitting')
-    
+
     // Simulate API call
     setTimeout(() => {
       setStatus('success')
       setEmail('')
       setTimeout(() => setStatus('idle'), 3000)
     }, 1000)
-  }
+  }  // <-- This was missing!
 
   const socialLinks = [
     {
       name: 'Instagram',
       icon: faInstagram,
-      url: 'https://instagram.com/dennizoclassic',
+      url: 'https://www.instagram.com/dennizo_classic_kenya?igsh=c2h4dGNlM255NnF2',
       color: '#E4405F'
+    },
+    {
+      name: 'Boomplay',
+      icon: faHeart,
+      url: 'https://www.boomplay.com/share/artist/121186191?share_platform=an&srList=ANDROID&srModel=COPYLINK&share_channel=copylink&share_content=artist',
+      color: '#FF6B6B'
     },
     {
       name: 'TikTok',
       icon: faTiktok,
-      url: 'https://tiktok.com/@dennizoclassic',
+      url: 'https://vt.tiktok.com/ZSXjfyujq/',
       color: '#000000'
     },
     {
       name: 'YouTube',
       icon: faYoutube,
-      url: 'https://youtube.com/@dennizoclassic',
+      url: 'https://youtube.com/@dennizoclassickenya1295?si=hVFnbia_Ti6y29d3',
       color: '#FF0000'
     },
     {
       name: 'Facebook',
       icon: faFacebook,
-      url: 'https://facebook.com/dennizoclassic',
+      url: 'https://www.facebook.com/Dennizoclassicke',
       color: '#1877F2'
     },
     {
       name: 'Spotify',
       icon: faSpotify,
-      url: 'https://spotify.com/dennizoclassic',
+      url: 'https://open.spotify.com/artist/6baGEd0XvHieMCojmrywsx?si=LJa903enSJqpZ8o7imm3ew',
       color: '#1DB954'
     },
   ]
@@ -88,7 +92,7 @@ const Footer = () => {
       style={{ backgroundColor: '#3C3B6E' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-[auto_auto_auto_1fr] gap-10">
           {/* Brand Section */}
           <div className="md:col-span-1">
             <h3 className="text-3xl font-display mb-4">
@@ -112,7 +116,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-white/60 hover:text-pink_orchid transition-colors text-sm"
+                    className="text-white/60 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -129,7 +133,7 @@ const Footer = () => {
             <p className="text-white/60 text-sm mb-4">
               Subscribe to receive weekly inspiration from Dennizo.
             </p>
-            
+
             <form onSubmit={handleSubscribe} className="space-y-3">
               <div className="flex flex-col gap-2">
                 <input
@@ -148,17 +152,13 @@ const Footer = () => {
                   {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </div>
-              
+
               {status === 'success' && (
                 <p className="text-green-400 text-sm text-center">
                   ✅ Subscribed successfully!
                 </p>
               )}
             </form>
-            
-          {/*<p className="text-white/40 text-xs mt-3">
-              ✝️ Weekly inspiration delivered to your inbox
-            </p> */}
           </div>
 
           {/* Contact Info */}
@@ -169,7 +169,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
                 <FontAwesomeIcon icon={faPhone} className="text-gray-400 w-4" />
-                <a href="tel:+254700000000">+254 700 000 000</a>
+                <a href="tel:+254715175508">+254 715 175 508</a>
               </li>
               <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
                 <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 w-4" />
@@ -182,8 +182,8 @@ const Footer = () => {
               <h4 className="font-semibold text-white mb-4 text-sm py-6 uppercase tracking-wider">
                 Connect With Me
               </h4>
-              
-              <div className="flex gap-3">
+
+              <div className="flex flex-wrap gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}

@@ -1,75 +1,80 @@
 ﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
-  faInstagram, 
-  faTiktok, 
-  faYoutube, 
-  faFacebook, 
-  faSpotify 
+import {
+  faInstagram,
+  faTiktok,
+  faYoutube,
+  faFacebook,
+  faSpotify
 } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone, faHeart } from '@fortawesome/free-solid-svg-icons'  // Added faHeart
 
 const Contact = () => {
   const socialLinks = [
     {
       name: 'Instagram',
       icon: faInstagram,
-      url: 'https://instagram.com/dennizoclassic',
+      url: 'https://www.instagram.com/dennizo_classic_kenya',
       color: '#E4405F'
+    },
+    {
+      name: 'Boomplay',
+      icon: faHeart,
+      url: 'https://www.boomplay.com/artist/121186191',
+      color: '#FF6B6B'
     },
     {
       name: 'TikTok',
       icon: faTiktok,
-      url: 'https://tiktok.com/@dennizoclassic',
+      url: 'https://vt.tiktok.com/ZSXjfyujq/',
       color: '#000000'
     },
     {
       name: 'YouTube',
       icon: faYoutube,
-      url: 'https://youtube.com/@dennizoclassic',
+      url: 'https://youtube.com/@dennizoclassickenya1295',
       color: '#FF0000'
     },
     {
       name: 'Facebook',
       icon: faFacebook,
-      url: 'https://facebook.com/dennizoclassic',
+      url: 'https://www.facebook.com/Dennizoclassicke',
       color: '#1877F2'
     },
     {
       name: 'Spotify',
       icon: faSpotify,
-      url: 'https://spotify.com/dennizoclassic',
+      url: 'https://open.spotify.com/artist/6baGEd0XvHieMCojmrywsx',
       color: '#1DB954'
-    }
+    },
   ]
 
   return (
-    <section className="min-h-screen py-24 bg-gray-300 flex items-center justify-center">
+    <section className="min-h-screen py-24 bg-gray-100 flex items-center justify-center">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid md:grid-cols-2">
             {/* Left Column - Contact Info */}
-            <div className="p-12" style={{ backgroundColor: '#6B7280' }}>
+            <div className="p-12" style={{ backgroundColor: '#3C3B6E' }}>
               <h1 className="text-4xl font-display font-bold text-white mb-6">Contact Dennizo Classic</h1>
               <p className="text-gray-200 mb-8">
                 Ready to bring your next event to life? Send a message, book a call, or request a quote.
               </p>
-              
+
               <div className="space-y-6 text-sm text-gray-200">
                 <div>
                   <span className="block font-semibold text-white">Email</span>
-                  <a href="mailto:info@dennizoclassic.com" className="hover:text-gray-light transition-colors">
+                  <a href="mailto:info@dennizoclassic.com" className="hover:text-pink_orchid transition-colors">
                     info@dennizoclassic.com
                   </a>
                 </div>
                 <div>
                   <span className="block font-semibold text-white">Phone</span>
-                  <a href="tel:+254700000000" className="hover:text-gray-light transition-colors">
+                  <a href="tel:+254700000000" className="hover:text-pink_orchid transition-colors">
                     +254 700 000 000
                   </a>
                 </div>
-                
               </div>
 
               {/* Social Links */}
@@ -77,7 +82,7 @@ const Contact = () => {
                 <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
                   Connect With Me
                 </h4>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
@@ -111,21 +116,21 @@ const Contact = () => {
                 </div>
 
                 <div className="grid gap-6">
-                  <div className="p-6 bg-gray-100 rounded-3xl">
+                  <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
                     <h3 className="font-semibold text-lg mb-2" style={{ color: '#3C3B6E' }}>
                       Quick Booking
                     </h3>
                     <p className="text-gray-600">Use the booking page to submit your event details and receive availability quickly.</p>
                   </div>
 
-                  <div className="p-6 bg-gray-100 rounded-3xl">
+                  <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
                     <h3 className="font-semibold text-lg mb-2" style={{ color: '#3C3B6E' }}>
                       Need a quote?
                     </h3>
                     <p className="text-gray-600">Share your event date, size, and vision and I'll provide a custom package.</p>
                   </div>
 
-                  <div className="p-6 bg-gray-100 rounded-3xl">
+                  <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
                     <h3 className="font-semibold text-lg mb-2" style={{ color: '#3C3B6E' }}>
                       Stay connected
                     </h3>
