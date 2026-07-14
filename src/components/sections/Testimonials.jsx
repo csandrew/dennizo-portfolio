@@ -130,7 +130,7 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="testimonial-card min-w-[420px] md:min-w-[380px] max-w-[380px] flex-shrink-0"
+                className="testimonial-card min-w-[280px] md:min-w-[340px] lg:min-w-[380px] max-w-[380px] flex-shrink-0"
               >
                 <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full border-t-4 flex flex-col" style={{ borderTopColor: '#B22234' }}>
                   {/* Header with quote and rating */}
