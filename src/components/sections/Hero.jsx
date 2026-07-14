@@ -22,12 +22,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          {/*<div className="inline-block bg-dark_amethyst/60 backdrop-blur-sm px-4 py-2 rounded-md mb-6 border border-pink_orchid/20">
-            <span className="text-pink_orchid font-body font-semibold text-xs uppercase tracking-widest">
-              Professional MC & Gospel Artist 
-            </span>
-          </div> */}
-
+         
           <h1 className="text-5xl md:text-7xl font-display text-white leading-tight mb-4">
             <span className="block">Dennizo Classic</span>
           </h1>
@@ -37,8 +32,8 @@ const Hero = () => {
           </p>
 
           <p className="text-md text-gray-300 font-body font-light mb-8 max-w-2xl">
-            Bringing energy, elegance, and unforgettable moments to weddings,
-            corporate events & live shows across Kenya
+            Bringing energy, elegance, and unforgettable moments to worship services,
+            corporate events, weddings & live shows across eastern Africa.
           </p>
 
 

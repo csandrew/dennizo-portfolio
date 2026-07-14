@@ -161,12 +161,12 @@ const Testimonials = () => {
 
                   {/* Client Info - fixed at bottom */}
                   <div className="flex items-center gap-4 pt-4 border-t border-gray-100 mt-auto">
-                    <img
+                    {/*<img
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover border-2 flex-shrink-0"
                       style={{ borderColor: '#3C3B6E' }}
-                    />
+                    /> */}
                     <div className="min-w-0 flex-1">
                       <h4 className="font-bold text-base truncate" style={{ color: '#3C3B6E' }}>
                         {testimonial.name}

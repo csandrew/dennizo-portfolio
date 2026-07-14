@@ -18,15 +18,13 @@ const About = () => {
           <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest">
             About Me
           </span>
-           <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
-          <h2 className="text-4xl md:text-5xl font-display text-secondary mt-2 mb-4">
-            A Trusted Voice for Every Event
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
+          <h2 className="text-3xl md:text-5xl font-display text-secondary mt-2 mb-4">
+            Service • Worship • Growth
           </h2>
-        
-          <p className="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">
-            Dennizo Classic combines professional MC hosting, live event direction, and high-energy entertainment 
-            to keep audiences engaged from start to finish.
-          </p>
+
+          <p className="text-gray-600 max-w-6xl mx-auto mt-4 text-lg">
+            Dennizo Classic combines mentorship, songwriting, music production, professional MC hosting and live event coordination to touch hearts, transform lives and glorify God.</p>
         </motion.div>
 
         {/* Image & Bio Section - Full width, balanced */}
@@ -49,7 +47,7 @@ const About = () => {
               </div>
               {/* Badge - Floating */}
               <div className="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl animate-bounce-slow">
-                MC & Gospel Artist
+                Mentor & Gospel Artist
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-primary/20 rounded-full"></div>
@@ -66,26 +64,26 @@ const About = () => {
             className="lg:w-3/5"
           >
             <h3 className="text-3xl font-display text-secondary mb-6">
-              Professional MC & Gospel Artist
+              My Journey in Music & Ministry
             </h3>
             <div className="space-y-5 text-gray-600 text-base leading-relaxed">
               <p>
-                Dennizo Classic is a dynamic Master of Ceremonies and Gospel artist 
-                with over <span className="text-primary font-semibold">5+ years</span> of experience hosting events across Kenya. 
-                Known for his charismatic stage presence, professional poise, and ability 
-                to connect with diverse audiences, Dennizo brings a unique blend of 
-                entertainment and inspiration to every platform.
+                Dennizo Classic's journey with music is one of faith, discovery, and purpose. 
+                It began in the humble setting of a local church in Kenya, where the harmonies of worship first captured his heart. 
+                As a young boy, he would sit in the pews, mesmerized not just by the melodies, but by the way music seemed to speak to the soul. 
+                It was there that he first understood: music was more than sound - it was a language of the spirit.
               </p>
               <p>
-                Whether commanding the stage at a wedding reception, leading a corporate 
-                gala, or ministering through Gospel music, Dennizo delivers excellence 
-                with authenticity. His versatility allows him to seamlessly transition 
-                between professional hosting and soul-stirring musical performances, 
-                making him a sought-after personality for events that demand both 
-                elegance and energy.
+                Encouraged by his family and church community, Dennizo began to explore his own musical gifts. 
+                He learned to sing, to play, and eventually, to write. 
+                His songs are simple expressions of faith, and they carry an authenticity that resonates with those who heard them. 
+              </p>
+              <p>Over time, Dennizo's role has expanded beyond the microphone. 
+                He has become a worship leader, a music director, and eventually, a mentor to other young artists. 
+                Each step refined his craft and deepened his conviction that music, when offered with excellence and anointing, can open hearts, shift atmospheres, and transform lives.
               </p>
               <p className="text-primary font-medium italic">
-                "With a passion for transforming moments into unforgettable experiences, 
+                "With a passion for transforming moments into unforgettable experiences,
                 Dennizo continues to inspire audiences across Kenya and beyond."
               </p>
             </div>

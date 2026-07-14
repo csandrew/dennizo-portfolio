@@ -81,7 +81,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white py-4 shadow-lg border-t border-gray-100">
+          <div className="md:hidden bg-white py-4 shadow-lg border-t border-gray-200">
             {navigation.map((item) => (
               <Link
                 key={item.name}
