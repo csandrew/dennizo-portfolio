@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center text-white pt-20">
+    <section className="relative w-full min-h-screen flex items-center text-white pt-1">
       {/* Darker Background with Overlay */}
       <div className="absolute inset-0">
         <div
@@ -28,12 +28,13 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 font-body font-light mb-2">
-            Gospel Artist | Music Director | Professional MC
+            Gospel Artist | Music Director | Songwriter 
           </p>
 
-          <p className="text-md text-gray-300 font-body font-light mb-8 max-w-2xl">
-            Bringing energy, elegance, and unforgettable moments to worship services,
-            corporate events, weddings & live shows across eastern Africa.
+          <p className="text-sm text-gray-300 font-body font-light mb-8 max-w-2xl">
+            With a heart for worship and a passion for service, my music honours God, uplifts people, and transforms gatherings into moments of unforgettable encounters.
+
+
           </p>
 
 
@@ -49,7 +50,7 @@ const Hero = () => {
             </Link>
 
             <Link
-              to="/music"
+              to="/portfolio"
               className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/40 text-white font-body font-bold uppercase tracking-wider rounded-lg hover:bg-white hover:text-black transition-all"
             >
               ▶ Watch Showreel
@@ -60,16 +61,16 @@ const Hero = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-white/10">
             <div>
-              <div className="text-3xl font-display text-accent">200+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">Events Hosted</div>
+              <div className="text-3xl font-display text-accent">15+</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wider">Songs Written & Produced</div>
             </div>
             <div>
-              <div className="text-3xl font-display text-accent">50K+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">Audience Reached</div>
+              <div className="text-3xl font-display text-accent">50+</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wider">Live Performances & Events</div>
             </div>
             <div>
               <div className="text-3xl font-display text-accent">5+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">Years Experience</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wider">Years in Music Ministry</div>
             </div>
           </div>
         </motion.div>

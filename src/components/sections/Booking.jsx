@@ -69,7 +69,7 @@ const Booking = () => {
   }
 
   return (
-    <section className="py-20 bg-gray-300 text-gray-700" id="booking">
+    <section className="py-20 bg-white text-gray-700" id="booking">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ const Booking = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-6 max-w-3xl mx-auto border border-primary rounded-lg p-6 md:p-10 bg-white shadow-lg">
+        <div className="flex flex-col gap-6 max-w-3xl mx-auto border border-primary rounded-lg p-6 md:p-10 bg-gray-100 shadow-lg">
           
           {/* Booking Form */}
           <form onSubmit={handleSubmit} className="space-y-6">

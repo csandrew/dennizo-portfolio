@@ -1,8 +1,7 @@
 ﻿import React from 'react'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicrophone, faMusic, faHeart, faUsers, faStar, faCalendarCheck, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-
+import { faMicrophone, faMusic, faHeart, faUsers, faStar, faCalendarCheck, faArrowRight, faBook } from '@fortawesome/free-solid-svg-icons'
 const About = () => {
   return (
     <section className="py-20 bg-gray-50" id="about">
@@ -16,14 +15,14 @@ const About = () => {
           className="text-center mb-16"
         >
           <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest">
-            About 
+            About
           </span>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-3 mb-4"></div>
-          <h2 className="text-4xl md:text-5xl font-display text-secondary mt-2 mb-4">
+          <h2 className="text-2xl md:text-2xl font-display text-secondary mt-2 mb-3">
             Service • Worship • Growth
           </h2>
           <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
-            Dennizo Classic combines mentorship, songwriting, music production, professional MC hosting, 
+            Dennizo Classic combines mentorship, songwriting, music production, professional MC hosting,
             and live event coordination to touch hearts, transform lives, and glorify God.
           </p>
         </motion.div>
@@ -46,7 +45,7 @@ const About = () => {
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl">
-                Mentor & Gospel Artist
+                Mentor & Music Director
               </div>
               <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-primary/20 rounded-full"></div>
               <div className="absolute -bottom-8 -right-8 w-32 h-32 border-4 border-secondary/10 rounded-full"></div>
@@ -60,32 +59,32 @@ const About = () => {
             viewport={{ once: true }}
             className="lg:w-3/5"
           >
-            <h3 className="text-3xl font-display text-secondary mb-6">
+            <h3 className="text-2xl font-display text-secondary mb-6">
               My Journey in Music & Ministry
             </h3>
             <div className="space-y-5 text-gray-600 text-base leading-relaxed">
+
               <p>
-                Dennizo Classic's journey with music is one of faith, discovery, and purpose. 
-                It began in the humble setting of a local church in Kenya, where the harmonies of worship first captured his heart. 
-                As a young boy, he would sit in the pews, mesmerized not just by the melodies, but by the way music seemed to speak to the soul. 
-                It was there that he first understood: music was more than sound — it was a language of the spirit.
+                Dennizo Classic's journey with music is one of faith, discovery, and purpose.
+                It began in the humble setting of a local church in Kenya, where the harmonies of worship first captured my heart.
+                As a young boy, I would sit in the pews, mesmerized not just by the melodies, but by the way music seemed to speak to the soul.
+                It was there that I first understood: music was more than sound.
               </p>
               <p>
-                Encouraged by his family and church community, Dennizo began to explore his own musical gifts. 
-                He learned to sing, to play, and eventually, to write. 
-                His songs are simple expressions of faith that carry an authenticity resonating with all who hear them.
+                Encouraged by my family and church community, I began to explore my musical gifts — learning to sing, to play, and to write.
+                My songs are simple expressions of faith that carry an authenticity resonating with all who hear them.
               </p>
               <p>
-                Over time, Dennizo's role expanded beyond the microphone. 
-                He became a worship leader, a music director, and eventually, a mentor to other young artists. 
-                Each step refined his craft and deepened his conviction that music, when offered with excellence and anointing, can open hearts, shift atmospheres, and transform lives.
+                Over time, my role expanded beyond the microphone.
+                I became a worship leader, a music director, and eventually, a mentor to other young artists.
+                Each step deepened my conviction that music, when offered with excellence and reverence to the Lord, opens hearts and transforms lives.
               </p>
               <p className="text-primary font-medium italic">
-                "With a passion for transforming moments into unforgettable experiences, 
-                Dennizo continues to inspire audiences across Kenya and beyond."
+                "With a passion for transforming moments into unforgettable experiences,
+                I continue to inspire audiences across Kenya and beyond."
               </p>
-            </div>
 
+            </div>
             <div className="grid grid-cols-3 gap-6 mt-8 pt-8 border-t-2 border-primary/20">
               <div className="text-center">
                 <div className="text-4xl font-display text-primary">200+</div>
@@ -112,25 +111,30 @@ const About = () => {
           className="max-w-6xl mx-auto"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-display text-secondary mb-3">Areas of Expertise</h3>
+            <h3 className="text-2xl font-display text-secondary mb-3">Areas of Expertise</h3>
             <p className="text-gray-500">Delivering excellence across every platform</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: faMicrophone,
-                title: 'MC Hosting',
-                description: 'Professional master of ceremonies for weddings, corporate events, concerts, and private functions.'
+                title: 'Gospel Music & Songwriting',
+                description: 'Soul-stirring Gospel performances and original songs that inspire, uplift, and minister to audiences with authenticity, anointing, and excellence.'
               },
               {
                 icon: faMusic,
-                title: 'Gospel Music',
-                description: 'Soul-stirring Gospel performances that inspire, uplift, and minister to audiences with authenticity.'
+                title: 'MC Hosting & Event Direction',
+                description: 'Professional Master of Ceremonies for weddings, corporate events, concerts, and private functions - keeping audiences engaged from start to finish with charisma, confidence, and excellence.'
               },
               {
                 icon: faUsers,
-                title: 'Event Direction',
-                description: 'Seamless event flow management, audience engagement, and coordination from start to finish.'
+                title: 'Worship Leading & Music Direction',
+                description: 'Leading congregations and music teams into God\'s presence with skill, vision, and a heart devoted to worship - creating atmospheres where people encounter God.'
+              },
+              {
+                icon: faBook,
+                title: 'Publishing & Mentorship',
+                description: 'Publishing songs that inspire, impact, and advance the Kingdom - while mentoring and empowering the next generation of worshippers and creatives.'
               }
             ].map((item, index) => (
               <motion.div
@@ -178,7 +182,7 @@ const About = () => {
               {
                 icon: faUsers,
                 title: 'Versatility',
-                description: 'Adaptable to any event type, culture, or audience'
+                description: 'Adaptable to any event type, or audience'
               },
               {
                 icon: faCalendarCheck,
