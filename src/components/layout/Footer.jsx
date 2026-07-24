@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useForm } from '@formspree/react'
 import {
   faInstagram,
   faTiktok,
@@ -17,21 +18,7 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('idle')
-
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (!email) return
-
-    setStatus('submitting')
-
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success')
-      setEmail('')
-      setTimeout(() => setStatus('idle'), 3000)
-    }, 1000)
-  }  // <-- This was missing!
+  const [state, handleSubmit] = useForm('mvzewezo')
 
   const socialLinks = [
     {
@@ -93,7 +80,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-[auto_auto_auto_1fr] gap-10">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div>
             <h3 className="text-3xl font-display mb-4">
               <span className="text-white">DENNIZO</span>
               <span className="text-pink_orchid">.</span>
@@ -115,7 +102,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-white/60 hover:text-white transition-colors text-sm"
+                    className="text-white/60 hover:text-pink_orchid transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -133,26 +120,27 @@ const Footer = () => {
               Subscribe to receive weekly inspiration from Dennizo.
             </p>
 
-            <form onSubmit={handleSubscribe} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <div className="flex flex-col gap-2">
                 <input
                   type="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder="Enter your email address"
                   required
                   className="px-4 py-2.5 rounded-lg text-gray-800 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-pink_orchid transition-colors w-full"
                 />
                 <button
                   type="submit"
-                  disabled={status === 'submitting'}
+                  disabled={state.submitting}
                   className="px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/80 transition-all disabled:opacity-50 w-full"
                 >
-                  {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
+                  {state.submitting ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </div>
 
-              {status === 'success' && (
+              {state.succeeded && (
                 <p className="text-green-400 text-sm text-center">
                   ✅ Subscribed successfully!
                 </p>
@@ -214,7 +202,7 @@ const Footer = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-white/40 hover:text-white transition-colors text-xs uppercase tracking-wider"
+                className="text-white/40 hover:text-pink_orchid transition-colors text-xs uppercase tracking-wider"
               >
                 {link.name}
               </Link>

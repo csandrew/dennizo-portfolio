@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useForm, ValidationError } from '@formspree/react'
 
 const Booking = () => {
+  const [state, handleSubmit] = useForm('mvzewezo') // Your form ID
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,8 +19,6 @@ const Booking = () => {
     acceptTerms: false
   })
 
-  const [status, setStatus] = useState('idle')
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setFormData({
@@ -27,29 +27,23 @@ const Booking = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
-    
-    // Check if both checkboxes are checked
+
     if (!formData.confirmDetails) {
       alert('Please confirm your details for appointment booking.')
       return
     }
-    
     if (!formData.acceptTerms) {
       alert('Please accept the Terms & Conditions to proceed.')
       return
     }
-    
-    setStatus('submitting')
-    
-    try {
-      await fetch('/api/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
-      setStatus('success')
+
+    // Formspree handles the submission
+    await handleSubmit(e)
+
+    // Reset form on success
+    if (state.succeeded) {
       setFormData({
         name: '',
         email: '',
@@ -63,13 +57,30 @@ const Booking = () => {
         confirmDetails: false,
         acceptTerms: false
       })
-    } catch (error) {
-      setStatus('error')
     }
   }
 
+  if (state.succeeded) {
+    return (
+      <section className="py-20 bg-gray-100" id="booking">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center">
+            <div className="text-6xl mb-4">✅</div>
+            <h2 className="text-3xl font-display text-secondary mb-4">Thank You!</h2>
+            <p className="text-gray-600 text-lg">
+              Your booking request has been received. I'll get back to you within 2 hours.
+            </p>
+            <Link to="/" className="inline-block mt-6 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
+              Return Home
+            </Link>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="py-20 bg-white text-gray-700" id="booking">
+    <section className="py-20 bg-gray-100" id="booking">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,20 +89,18 @@ const Booking = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest mb-4">
+          <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest">
             Bookings
           </span>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
-          <h2 className="section-title text-secondary">Book Now</h2>
-          <p className="section-subtitle text-gray-700">
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-3 mb-4"></div>
+          <h2 className="text-3xl md:text-4xl font-display text-secondary">Book Now</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mt-2">
             Let's create unforgettable moments together
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-6 max-w-3xl mx-auto border border-primary rounded-lg p-6 md:p-10 bg-gray-100 shadow-lg">
-          
-          {/* Booking Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10">
+          <form onSubmit={onSubmit} className="space-y-6">
             {/* Name & Phone */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -107,6 +116,7 @@ const Booking = () => {
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                   placeholder="Your name"
                 />
+                <ValidationError field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -121,6 +131,7 @@ const Booking = () => {
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                   placeholder="+254 700 000 000"
                 />
+                <ValidationError field="phone" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
             </div>
 
@@ -137,6 +148,7 @@ const Booking = () => {
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                 placeholder="you@example.com"
               />
+              <ValidationError field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Event Type */}
@@ -159,6 +171,7 @@ const Booking = () => {
                 <option value="product-launch">Product Launch</option>
                 <option value="other">Other</option>
               </select>
+              <ValidationError field="eventType" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Preferred Date & Time */}
@@ -175,6 +188,7 @@ const Booking = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                 />
+                <ValidationError field="eventDate" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -188,6 +202,7 @@ const Booking = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                 />
+                <ValidationError field="eventTime" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
             </div>
 
@@ -205,6 +220,7 @@ const Booking = () => {
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                 placeholder="City, Venue"
               />
+              <ValidationError field="location" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Budget */}
@@ -224,6 +240,7 @@ const Booking = () => {
                 <option value="100k-200k">100,000 - 200,000 KES</option>
                 <option value="200k-plus">200,000+ KES</option>
               </select>
+              <ValidationError field="budget" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Additional Notes */}
@@ -238,7 +255,8 @@ const Booking = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
                 placeholder="Tell me about your event..."
-              ></textarea>
+              />
+              <ValidationError field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Appointment Booking - Grid Section */}
@@ -248,7 +266,6 @@ const Booking = () => {
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Confirm Details */}
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <input
                     type="checkbox"
@@ -264,7 +281,6 @@ const Booking = () => {
                   </label>
                 </div>
 
-                {/* Terms & Conditions */}
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <input
                     type="checkbox"
@@ -280,19 +296,21 @@ const Booking = () => {
                   </label>
                 </div>
               </div>
+              <ValidationError field="confirmDetails" errors={state.errors} className="text-red-500 text-sm mt-1" />
+              <ValidationError field="acceptTerms" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={status === 'submitting'}
+              disabled={state.submitting}
               className={`w-full py-4 bg-primary text-white font-bold uppercase tracking-wider rounded-lg transition-all ${
-                status === 'submitting'
+                state.submitting
                   ? 'opacity-50 cursor-not-allowed'
                   : 'hover:bg-primary-dark transform hover:scale-[1.02]'
               }`}
             >
-              {status === 'submitting' ? 'Sending...' : 'Submit'}
+              {state.submitting ? 'Sending...' : 'Submit'}
             </button>
 
             {/* Legal Agreement Text */}
@@ -302,18 +320,6 @@ const Booking = () => {
               {' | '}
               <Link to="/terms" className="text-primary hover:underline">Terms & Conditions</Link>
             </p>
-
-            {status === 'success' && (
-              <div className="p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 text-center">
-                ✅ Thank you! I'll get back to you within 2 hours.
-              </div>
-            )}
-            
-            {status === 'error' && (
-              <div className="p-4 bg-red-50 border border-red-500 rounded-lg text-red-700 text-center">
-                ❌ Something went wrong. Please call me directly or try again.
-              </div>
-            )}
           </form>
         </div>
       </div>
