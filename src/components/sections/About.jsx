@@ -87,16 +87,16 @@ const About = () => {
             </div>
             <div className="grid grid-cols-3 gap-6 mt-8 pt-8 border-t-2 border-primary/20">
               <div className="text-center">
-                <div className="text-4xl font-display text-primary">200+</div>
-                <div className="text-sm text-gray-500 font-medium mt-1">Events Hosted</div>
+                <div className="text-4xl font-display text-primary">15+</div>
+                <div className="text-sm text-gray-500 font-medium mt-1">SONGS WRITTEN & PRODUCED</div>
               </div>
               <div className="text-center border-l-2 border-r-2 border-gray-200">
                 <div className="text-4xl font-display text-primary">50K+</div>
-                <div className="text-sm text-gray-500 font-medium mt-1">Audience Reached</div>
+                <div className="text-sm text-gray-500 font-medium mt-1">LIVE PERFORMANCES & EVENTS</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-display text-primary">5+</div>
-                <div className="text-sm text-gray-500 font-medium mt-1">Years Experience</div>
+                <div className="text-sm text-gray-500 font-medium mt-1">YEARS IN MUSIC MINISTRY</div>
               </div>
             </div>
           </motion.div>
@@ -225,12 +225,7 @@ const About = () => {
               Book Dennizo Now
               <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
             </a>
-            <a
-              href="tel:0715175508"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/80 transition-all hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              Call: 0715175508
-            </a>
+           
           </div>
         </motion.div>
       </div>
