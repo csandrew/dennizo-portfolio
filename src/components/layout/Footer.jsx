@@ -1,7 +1,6 @@
 ﻿import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useForm } from '@formspree/react'
 import {
   faInstagram,
   faTiktok,
@@ -17,20 +16,18 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
-  const [email, setEmail] = useState('')
-  const [state, handleSubmit] = useForm('mvzewezo')
 
   const socialLinks = [
     {
       name: 'Instagram',
       icon: faInstagram,
-      url: 'https://www.instagram.com/dennizo_classic_kenya?igsh=c2h4dGNlM255NnF2',
+      url: 'https://www.instagram.com/dennizo_classic_kenya',
       color: '#E4405F'
     },
     {
       name: 'Boomplay',
       icon: faHeart,
-      url: 'https://www.boomplay.com/share/artist/121186191?share_platform=an&srList=ANDROID&srModel=COPYLINK&share_channel=copylink&share_content=artist',
+      url: 'https://www.boomplay.com/artist/121186191',
       color: '#FF6B6B'
     },
     {
@@ -42,7 +39,7 @@ const Footer = () => {
     {
       name: 'YouTube',
       icon: faYoutube,
-      url: 'https://youtube.com/@dennizoclassickenya1295?si=hVFnbia_Ti6y29d3',
+      url: 'https://youtube.com/@dennizoclassickenya1295',
       color: '#FF0000'
     },
     {
@@ -54,7 +51,7 @@ const Footer = () => {
     {
       name: 'Spotify',
       icon: faSpotify,
-      url: 'https://open.spotify.com/artist/6baGEd0XvHieMCojmrywsx?si=LJa903enSJqpZ8o7imm3ew',
+      url: 'https://open.spotify.com/artist/6baGEd0XvHieMCojmrywsx',
       color: '#1DB954'
     },
   ]
@@ -111,7 +108,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter Section */}
+          {/* Newsletter Section - Kit HTML Form */}
           <div>
             <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
               Weekly Inspiration
@@ -120,31 +117,26 @@ const Footer = () => {
               Subscribe to receive weekly inspiration from Dennizo.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form 
+              action="https://app.kit.com/forms/9724728/subscriptions" 
+              method="post" 
+              className="space-y-3"
+            >
               <div className="flex flex-col gap-2">
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  required
-                  className="px-4 py-2.5 rounded-lg text-gray-800 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-pink_orchid transition-colors w-full"
+                <input 
+                  type="email" 
+                  name="email_address" 
+                  placeholder="Enter your email address" 
+                  required 
+                  className="w-full px-4 py-2.5 rounded-lg text-gray-800 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-pink_orchid transition-colors"
                 />
-                <button
-                  type="submit"
-                  disabled={state.submitting}
-                  className="px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/80 transition-all disabled:opacity-50 w-full"
+                <button 
+                  type="submit" 
+                  className="w-full px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/80 transition-all"
                 >
-                  {state.submitting ? 'Subscribing...' : 'Subscribe'}
+                  Subscribe
                 </button>
               </div>
-
-              {state.succeeded && (
-                <p className="text-green-400 text-sm text-center">
-                  ✅ Subscribed successfully!
-                </p>
-              )}
             </form>
           </div>
 
