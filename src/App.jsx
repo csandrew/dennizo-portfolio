@@ -1,28 +1,32 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { lazy, Suspense } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/layout/Layout'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Booking from './pages/Booking'
-import Portfolio from './pages/Portfolio'
-import Privacy from './pages/Privacy'
-import Terms from './pages/Terms'
+import Music from './components/sections/Music' // Ensure this path is correct
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Booking = lazy(() => import('./pages/Booking'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Terms = lazy(() => import('./pages/Terms'))
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="booking" element={<Booking />} />
-          <Route path="portfolio" element={<Portfolio />} />          
-          <Route path="privacy" element={<Privacy />} />
-          <Route path="terms" element={<Terms />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen grid place-items-center" role="status">Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="booking" element={<Booking />} />
+            <Route path="music" element={<Music />} /> 
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="terms" element={<Terms />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
     </Router>
   )
 }

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -59,7 +59,6 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
     { name: 'Book Now', href: '/booking' },
   ]
@@ -75,17 +74,17 @@ const Footer = () => {
       style={{ backgroundColor: '#3C3B6E' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-[auto_auto_auto_1fr] gap-10">
+        
+        <div className="grid md:grid-cols-[auto_auto_auto_auto] justify-between gap-10">
+          
           {/* Brand Section */}
-          <div>
+          <div className="max-w-xs">
             <h3 className="text-3xl font-display mb-4">
               <span className="text-white">DENNIZO</span>
               <span className="text-pink_orchid">.</span>
             </h3>
             <p className="text-white/60 text-sm leading-relaxed">
-              Gospel Artist | Music Director | Professional MC<br />
-              Creating unforgettable moments<br />
-              across Kenya and beyond.
+              Inspiring hearts, transforming lives, and glorifying God through music and mentorship.
             </p>
           </div>
 
@@ -99,7 +98,8 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-white/60 hover:text-pink_orchid transition-colors text-sm"
+                    // Added hover:translate-x-1 for a smooth slide effect
+                    className="inline-block text-white/60 hover:text-pink_orchid hover:translate-x-1 transition-all duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -109,7 +109,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Section - Kit HTML Form */}
-          <div>
+          <div className="w-full max-w-xs">
             <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
               Weekly Inspiration
             </h4>
@@ -128,11 +128,13 @@ const Footer = () => {
                   name="email_address" 
                   placeholder="Enter your email address" 
                   required 
-                  className="w-full px-4 py-2.5 rounded-lg text-gray-800 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-pink_orchid transition-colors"
+                  // Added hover:bg-white/15 and focus:ring-2 for better input feedback
+                  className="w-full px-4 py-2.5 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-pink_orchid/50 focus:border-pink_orchid transition-all duration-300"
                 />
                 <button 
                   type="submit" 
-                  className="w-full px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/80 transition-all"
+                  // Added hover:scale-[1.02] and hover:shadow-md for the button
+                  className="w-full px-4 py-2.5 bg-white text-secondary font-semibold rounded-lg hover:bg-white/90 hover:scale-[1.02] hover:shadow-md transition-all duration-300"
                 >
                   Subscribe
                 </button>
@@ -146,12 +148,13 @@ const Footer = () => {
               Contact Info
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
-                <FontAwesomeIcon icon={faPhone} className="text-gray-400 w-4" />
+              {/* Added group class so icon and text hover together */}
+              <li className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 text-sm">
+                <FontAwesomeIcon icon={faPhone} className="text-gray-400 group-hover:text-pink_orchid transition-colors duration-300 w-4" />
                 <a href="tel:+254715175508">+254 715 175 508</a>
               </li>
-              <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors text-sm">
-                <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 w-4" />
+              <li className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300 text-sm">
+                <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 group-hover:text-pink_orchid transition-colors duration-300 w-4" />
                 <a href="mailto:info@dennizoclassic.com">info@dennizoclassic.com</a>
               </li>
             </ul>
@@ -169,7 +172,8 @@ const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    // Added hover:-translate-y-1 and a colored glow using CSS variables
+                    className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]"
                     style={{
                       backgroundColor: 'rgba(255,255,255,0.08)',
                       color: social.color
@@ -194,9 +198,11 @@ const Footer = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-white/40 hover:text-pink_orchid transition-colors text-xs uppercase tracking-wider"
+                // Added hover:text-pink_orchid and a subtle underline effect
+                className="text-white/40 hover:text-pink_orchid transition-colors duration-300 text-xs uppercase tracking-wider relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-pink_orchid transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>

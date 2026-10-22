@@ -1,6 +1,6 @@
-# Dennizo Classic Portfolio
+# Dennizo Classic
 
-Professional portfolio website for Dennizo Classic - MC, Gospel Artist & Entertainer.
+Official website for Dennizo Classic - MC, Gospel Artist & Entertainer.
 
 ## Tech Stack
 
@@ -12,7 +12,7 @@ Professional portfolio website for Dennizo Classic - MC, Gospel Artist & Enterta
 
 ## Features
 
-- 🎤 Professional MC & Gospel Artist portfolio
+- 🎤 Professional MC & Gospel Artist showcase
 - 📱 Fully responsive design
 - 🎨 Custom branding with USA flag colors
 - 📝 YouTube video integration

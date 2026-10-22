@@ -83,13 +83,7 @@ const Testimonials = () => {
           <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest mb-4">
             Testimonials
           </span>
-           <div className="w-24 h-1 bg-primary mx-auto rounded-full m-4"></div>
-          <h2 className="section-title text-secondary">What Clients Say</h2>
           
-          <p className="section-subtitle text-gray-600">
-            Real feedback from real events. Here's what clients have to say 
-            about working with Dennizo.
-          </p>
         </motion.div>
 
         <div className="relative">

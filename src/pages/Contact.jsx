@@ -8,7 +8,7 @@ import {
   faFacebook,
   faSpotify
 } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faPhone, faHeart } from '@fortawesome/free-solid-svg-icons'  // Added faHeart
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const Contact = () => {
   const socialLinks = [

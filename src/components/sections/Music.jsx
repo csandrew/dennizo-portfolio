@@ -1,50 +1,10 @@
-﻿import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faPlay, faCalendarCheck, faMusic, faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
 
-const PortfolioMusic = () => {
-  const works = [
-    {
-      title: 'Wedding Celebration',
-      subtitle: 'Elegant host for a luxury Nairobi wedding',
-      details: 'Ceremony, reception, and live audience engagement.',
-      icon: faMicrophone
-    },
-    {
-      title: 'Corporate Launch',
-      subtitle: 'Flagship product launch event',
-      details: 'Professional stage hosting and timeline coordination.',
-      icon: faMicrophone
-    },
-    {
-      title: 'Festival Show',
-      subtitle: 'High-energy performance at a live festival',
-      details: 'Audience hype, introductions, and show pacing.',
-      icon: faMusic
-    },
-    {
-      title: 'Charity Gala',
-      subtitle: 'Benefiting local community initiatives',
-      details: 'Hosted a successful charity event to raise funds for underprivileged children.',
-      icon: faCalendarCheck
-    },
-    {
-      title: 'Community Event',
-      subtitle: 'Local community celebration',
-      details: 'Organized and hosted a community event to bring people together and promote unity.',
-      icon: faCalendarCheck
-    },
-    {
-      title: 'Corporate Event',
-      subtitle: 'Annual company conference',
-      details: 'Managed the event from planning to execution, ensuring a seamless experience for all attendees.',
-      icon: faMicrophone
-    }
-  ]
-
+const MusicVideos = () => {
   const videos = [
     {
       id: 'jFiq9IXSQcQ',
@@ -85,9 +45,8 @@ const PortfolioMusic = () => {
   ]
 
   return (
-    <section className="py-20 bg-white" id="portfolio-music">
+    <section className="py-20 bg-white" id="music-videos">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,46 +55,16 @@ const PortfolioMusic = () => {
           className="text-center mb-12"
         >
           <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest mb-4">
-            Portfolio & Music
+            Music &amp; Videos
           </span>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-          <h2 className="text-3xl md:text-4xl font-display text-secondary mt-2 mb-4">
-            Events & Music
-          </h2>
+          
           <p className="text-gray-600 max-w-2xl mx-auto">
-            A selection of events where Dennizo Classic hosted, entertained, and created unforgettable moments — 
+            A selection of events where Dennizo Classic hosted, entertained, and created unforgettable moments —
             along with his latest Gospel music releases.
           </p>
         </motion.div>
 
-        {/* Events Section */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-display text-secondary mb-6 text-center">Events Hosted</h3>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {works.map((work, index) => (
-              <motion.div
-                key={work.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 hover:bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 border border-gray-200 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <FontAwesomeIcon icon={work.icon} className="text-primary text-xl" />
-                </div>
-                <h3 className="text-xl font-bold text-secondary mb-2">{work.title}</h3>
-                <p className="text-gray-600 text-sm mb-2">{work.subtitle}</p>
-                <p className="text-gray-500 text-sm leading-relaxed">{work.details}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t-2 border-gray-200 my-12"></div>
-
-        {/* Music Section */}
         <div>
           <h3 className="text-2xl font-display text-secondary mb-6 text-center">Music Videos</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -190,7 +119,6 @@ const PortfolioMusic = () => {
             ))}
           </div>
 
-          {/* YouTube Channel Link */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -214,4 +142,4 @@ const PortfolioMusic = () => {
   )
 }
 
-export default PortfolioMusic
+export default MusicVideos

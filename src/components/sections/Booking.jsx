@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
 
 const Booking = () => {
-  const [state, handleSubmit] = useForm('mvzewezo') // Your form ID
+  const [state, handleSubmit] = useForm('xgogglea')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,10 +39,8 @@ const Booking = () => {
       return
     }
 
-    // Formspree handles the submission
     await handleSubmit(e)
 
-    // Reset form on success
     if (state.succeeded) {
       setFormData({
         name: '',
@@ -101,68 +99,35 @@ const Booking = () => {
 
         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10">
           <form onSubmit={onSubmit} className="space-y-6">
-            {/* Name & Phone */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
+                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <input type="text" name="name" required value={formData.name} onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                  placeholder="Your name"
-                />
+                  placeholder="Your name" />
                 <ValidationError field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
+                <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                <input type="tel" name="phone" required value={formData.phone} onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                  placeholder="+254 700 000 000"
-                />
+                  placeholder="+254 700 000 000" />
                 <ValidationError field="phone" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
             </div>
 
-            {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="you@example.com"
-              />
+                placeholder="denizzoclassic@gmail.com" />
               <ValidationError field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Event Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Event Type *
-              </label>
-              <select
-                name="eventType"
-                required
-                value={formData.eventType}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-2">Event Type *</label>
+              <select name="eventType" required value={formData.eventType} onChange={handleChange}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700">
                 <option value="">Select event type</option>
                 <option value="wedding">Wedding</option>
                 <option value="corporate">Corporate Event</option>
@@ -174,66 +139,33 @@ const Booking = () => {
               <ValidationError field="eventType" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Preferred Date & Time */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Date *
-                </label>
-                <input
-                  type="date"
-                  name="eventDate"
-                  required
-                  value={formData.eventDate}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
+                <input type="date" name="eventDate" required value={formData.eventDate} onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700" />
                 <ValidationError field="eventDate" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Time *
-                </label>
-                <input
-                  type="time"
-                  name="eventTime"
-                  required
-                  value={formData.eventTime}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
+                <input type="time" name="eventTime" required value={formData.eventTime} onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700" />
                 <ValidationError field="eventTime" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
             </div>
 
-            {/* Location */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Location *
-              </label>
-              <input
-                type="text"
-                name="location"
-                required
-                value={formData.location}
-                onChange={handleChange}
+              <label className="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+              <input type="text" name="location" required value={formData.location} onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="City, Venue"
-              />
+                placeholder="City, Venue" />
               <ValidationError field="location" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Budget */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Budget Range
-              </label>
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
+              <select name="budget" value={formData.budget} onChange={handleChange}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700">
                 <option value="">Select budget range</option>
                 <option value="under-50k">Under 50,000 KES</option>
                 <option value="50k-100k">50,000 - 100,000 KES</option>
@@ -243,82 +175,38 @@ const Booking = () => {
               <ValidationError field="budget" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Additional Notes */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Additional Notes
-              </label>
-              <textarea
-                name="message"
-                rows="4"
-                value={formData.message}
-                onChange={handleChange}
+              <label className="block text-sm font-medium text-gray-700 mb-2">Additional Notes</label>
+              <textarea name="message" rows="4" value={formData.message} onChange={handleChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="Tell me about your event..."
-              />
+                placeholder="Tell me about your event..." />
               <ValidationError field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Appointment Booking - Grid Section */}
+            {/* Appointment Booking Section */}
             <div className="border-t-2 border-primary/30 pt-6">
-              <h3 className="text-lg font-semibold text-secondary mb-4">
-                Appointment Booking *
-              </h3>
-              
+              <h3 className="text-lg font-semibold text-secondary mb-4">Appointment Booking *</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input
-                    type="checkbox"
-                    name="confirmDetails"
-                    id="confirmDetails"
-                    required
-                    checked={formData.confirmDetails}
-                    onChange={handleChange}
-                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0"
-                  />
-                  <label htmlFor="confirmDetails" className="text-sm text-gray-700">
-                    I confirm my details for appointment booking
-                  </label>
+                  <input type="checkbox" name="confirmDetails" id="confirmDetails" required checked={formData.confirmDetails} onChange={handleChange}
+                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0" />
+                  <label htmlFor="confirmDetails" className="text-sm text-gray-700">I confirm my details for appointment booking</label>
                 </div>
-
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input
-                    type="checkbox"
-                    name="acceptTerms"
-                    id="acceptTerms"
-                    required
-                    checked={formData.acceptTerms}
-                    onChange={handleChange}
-                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0"
-                  />
-                  <label htmlFor="acceptTerms" className="text-sm text-gray-700">
-                    I have read & understood the terms & conditions
-                  </label>
+                  <input type="checkbox" name="acceptTerms" id="acceptTerms" required checked={formData.acceptTerms} onChange={handleChange}
+                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0" />
+                  <label htmlFor="acceptTerms" className="text-sm text-gray-700">I have read & understood the terms & conditions</label>
                 </div>
               </div>
-              <ValidationError field="confirmDetails" errors={state.errors} className="text-red-500 text-sm mt-1" />
-              <ValidationError field="acceptTerms" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={state.submitting}
-              className={`w-full py-4 bg-primary text-white font-bold uppercase tracking-wider rounded-lg transition-all ${
-                state.submitting
-                  ? 'opacity-50 cursor-not-allowed'
-                  : 'hover:bg-primary-dark transform hover:scale-[1.02]'
-              }`}
-            >
+            <button type="submit" disabled={state.submitting}
+              className={`w-full py-4 bg-primary text-white font-bold uppercase tracking-wider rounded-lg transition-all ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark transform hover:scale-[1.02]'}`}>
               {state.submitting ? 'Sending...' : 'Submit'}
             </button>
 
-            {/* Legal Agreement Text */}
             <p className="text-xs text-gray-500 text-center">
-              By submitting you agree to:{' '}
-              <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>
-              {' | '}
-              <Link to="/terms" className="text-primary hover:underline">Terms & Conditions</Link>
+              By submitting you agree to: <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link> | <Link to="/terms" className="text-primary hover:underline">Terms & Conditions</Link>
             </p>
           </form>
         </div>
