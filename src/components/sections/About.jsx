@@ -7,22 +7,22 @@ const About = () => {
     {
       title: 'Music & Releases',
       description: 'Listen, watch, discover.',
-      image: '/public/images/music-releases.jpg'
+      image: '/images/music-releases.jpg'
     },
     {
       title: 'Songwriting',
       description: 'The craft behind the music.',
-      image: '/public/images/song-writing.jpg'
+      image: '/images/song-writing.jpg'
     },
     {
       title: 'Live & Events',
       description: 'Performances and appearances.',
-      image: '/public/images/live-events.jpg'
+      image: '/images/live-events.jpg'
     },
     {
       title: 'Mentorship',
       description: 'Guidance, growth, and purpose.',
-      image: '/public/images/mentorship.jpg'
+      image: '/images/mentorship.jpg'
     }
   ]
 
@@ -60,13 +60,13 @@ const About = () => {
             <div className="relative group">
               <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-500">
                 <img
-                  src="/public/images/dennizo-classic-portrait.jpg"
-                  alt="Dennizo Classic - Professional MC & Gospel Artist"
+                  src='/images/dennizo-classic-portrait.jpg'
+                  alt="Dennizo Classic - Music Director & Mentor"
                   className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl">
-                Mentor & Music Director
+                Music Director & Mentor
               </div>
               <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-primary/20 rounded-full"></div>
               <div className="absolute -bottom-8 -right-8 w-32 h-32 border-4 border-secondary/10 rounded-full"></div>
@@ -133,7 +133,7 @@ const About = () => {
             <h2 className="text-3xl font-display text-secondary">The Craft</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
             {showcaseItems.map((item, index) => (
               <div key={index} className="group cursor-pointer">
                 <div className="overflow-hidden rounded-xl mb-4 h-64 md:h-80">
