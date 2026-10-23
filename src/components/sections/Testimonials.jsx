@@ -77,9 +77,7 @@ const Testimonials = () => {
             Testimonials
           </span>
           <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-display text-secondary">
-            What clients <span className="text-primary">say.</span>
-          </h2>
+          
         </motion.div>
 
         {/* Carousel */}
