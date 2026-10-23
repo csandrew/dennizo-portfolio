@@ -37,7 +37,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-md text-gray-300 font-body font-light mb-8 max-w-2xl">
-            Gospel Artist, Music Director, and Mentor.
+            Professional MC, Gospel Artist, Music Director, and Mentor.
             With a heart for worship and a passion for service, my music and hosting
             transform gatherings into unforgettable encounters.
           </p>
