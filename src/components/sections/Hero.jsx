@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const Hero = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center text-white pt-1 overflow-hidden">
-      
+
       {/* Background Video Container */}
       <div className="absolute inset-0">
         <video
@@ -20,7 +20,7 @@ const Hero = () => {
           <source src="/videos/hero-worship.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
+
         {/* Dark Overlay for text readability */}
         <div className="absolute inset-0 bg-secondary/70"></div>
       </div>
@@ -37,7 +37,9 @@ const Hero = () => {
           </h1>
 
           <p className="text-md text-gray-300 font-body font-light mb-8 max-w-2xl">
-            With a heart for worship and a passion for service, my music honours God, uplifts people, and transforms gatherings into moments of unforgettable encounters.
+            Gospel Artist, Music Director, and Mentor.
+            With a heart for worship and a passion for service, my music and hosting
+            transform gatherings into unforgettable encounters.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

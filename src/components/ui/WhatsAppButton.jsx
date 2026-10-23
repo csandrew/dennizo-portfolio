@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 const WhatsAppButton = () => {
-  // Replace this with the actual phone number (include country code, no spaces or +)
+  
   const phoneNumber = '254715175508' 
   const message = 'Hello Dennizo, I would like to inquire about your services.'
   
