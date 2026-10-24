@@ -60,7 +60,7 @@ const About = () => {
             <div className="relative group">
               <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-500">
                 <img
-                  src='/images/dennizo-classic-portrait.jpg'
+                  src='/images/hope-fm.jpeg'
                   alt="Dennizo Classic - Music Director & Mentor"
                   className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
