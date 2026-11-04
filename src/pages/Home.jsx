@@ -37,14 +37,14 @@ const Home = () => {
           </article>
           <article className="rounded-2xl bg-secondary p-8 text-white shadow-sm md:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-              Artist development
+              Mentorship & Direction
             </p>
             <h2 className="mt-3 text-2xl font-display font-bold">
               Build your craft and find your direction.
             </h2>
             <p className="mt-3 leading-relaxed text-white/75">
               Learn about a personal, purpose-led approach to creative
-              mentorship for developing artists.
+              mentorship for developing in life.
             </p>
             <Link
               to="/mentorship"
