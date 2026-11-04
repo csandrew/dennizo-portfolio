@@ -1,75 +1,56 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useForm, ValidationError } from '@formspree/react'
+
+const serviceOptions = [
+  'Event hosting',
+  'Music production',
+  'Songwriting',
+  'Vocal coaching',
+  'Music direction',
+  'Mentorship',
+  'Consultation',
+  'Collaboration / other'
+]
+
+const fieldClassName =
+  'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-800 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20'
 
 const Booking = () => {
   const [state, handleSubmit] = useForm('xgogglea')
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    eventType: '',
-    eventDate: '',
-    eventTime: '',
-    location: '',
-    budget: '',
-    message: '',
-    confirmDetails: false,
-    acceptTerms: false
-  })
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    })
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-
-    if (!formData.confirmDetails) {
-      alert('Please confirm your details for appointment booking.')
-      return
-    }
-    if (!formData.acceptTerms) {
-      alert('Please accept the Terms & Conditions to proceed.')
-      return
-    }
-
-    await handleSubmit(e)
-
-    if (state.succeeded) {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        eventType: '',
-        eventDate: '',
-        eventTime: '',
-        location: '',
-        budget: '',
-        message: '',
-        confirmDetails: false,
-        acceptTerms: false
-      })
-    }
-  }
+  const [searchParams] = useSearchParams()
+  const requestedService = searchParams.get('service')
+  const initialService = serviceOptions.includes(requestedService) ? requestedService : ''
+  const [service, setService] = useState(initialService)
+  const isEventEnquiry = service === 'Event hosting'
 
   if (state.succeeded) {
     return (
-      <section className="py-20 bg-gray-100" id="booking">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center">
-            <div className="text-6xl mb-4">✅</div>
-            <h2 className="text-3xl font-display text-secondary mb-4">Thank You!</h2>
-            <p className="text-gray-600 text-lg">
-              Your booking request has been received. I'll get back to you within 2 hours.
-            </p>
-            <Link to="/" className="inline-block mt-6 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
-              Return Home
+      <section className="min-h-[70vh] bg-gray-50 px-4 py-28">
+        <div className="mx-auto max-w-2xl rounded-3xl bg-white p-8 text-center shadow-sm md:p-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            Enquiry received
+          </p>
+          <h1 className="mt-4 text-3xl font-display font-bold text-secondary md:text-4xl">
+            Thank you for getting in touch.
+          </h1>
+          <p className="mt-4 leading-relaxed text-gray-600">
+            Your enquiry has been submitted. I’ll review the details and follow
+            up using the contact information you provided to discuss
+            availability and next steps.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/"
+              className="rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
+            >
+              Return home
+            </Link>
+            <Link
+              to="/services"
+              className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-secondary transition-colors hover:bg-gray-50"
+            >
+              Explore services
             </Link>
           </div>
         </div>
@@ -78,140 +59,263 @@ const Booking = () => {
   }
 
   return (
-    <section className="py-20 bg-gray-100" id="booking">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <span className="text-primary font-body font-semibold text-sm uppercase tracking-widest">
-            Bookings
-          </span>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-3 mb-4"></div>
-          <h2 className="text-3xl md:text-4xl font-display text-secondary">Book Now</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mt-2">
-            Let's create unforgettable moments together
+    <div className="pt-20">
+      <section className="bg-secondary text-white">
+        <div className="container-custom py-16 text-center md:py-20">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+            Enquiries &amp; bookings
           </p>
-        </motion.div>
-
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10">
-          <form onSubmit={onSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                <input type="text" name="name" required value={formData.name} onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                  placeholder="Your name" />
-                <ValidationError field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                <input type="tel" name="phone" required value={formData.phone} onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                  placeholder="+254 700 000 000" />
-                <ValidationError field="phone" errors={state.errors} className="text-red-500 text-sm mt-1" />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="denizzoclassic@gmail.com" />
-              <ValidationError field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Event Type *</label>
-              <select name="eventType" required value={formData.eventType} onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700">
-                <option value="">Select event type</option>
-                <option value="wedding">Wedding</option>
-                <option value="corporate">Corporate Event</option>
-                <option value="concert">Concert</option>
-                <option value="party">Private Party</option>
-                <option value="product-launch">Product Launch</option>
-                <option value="other">Other</option>
-              </select>
-              <ValidationError field="eventType" errors={state.errors} className="text-red-500 text-sm mt-1" />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
-                <input type="date" name="eventDate" required value={formData.eventDate} onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700" />
-                <ValidationError field="eventDate" errors={state.errors} className="text-red-500 text-sm mt-1" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
-                <input type="time" name="eventTime" required value={formData.eventTime} onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700" />
-                <ValidationError field="eventTime" errors={state.errors} className="text-red-500 text-sm mt-1" />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Location *</label>
-              <input type="text" name="location" required value={formData.location} onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="City, Venue" />
-              <ValidationError field="location" errors={state.errors} className="text-red-500 text-sm mt-1" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
-              <select name="budget" value={formData.budget} onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700">
-                <option value="">Select budget range</option>
-                <option value="under-50k">Under 50,000 KES</option>
-                <option value="50k-100k">50,000 - 100,000 KES</option>
-                <option value="100k-200k">100,000 - 200,000 KES</option>
-                <option value="200k-plus">200,000+ KES</option>
-              </select>
-              <ValidationError field="budget" errors={state.errors} className="text-red-500 text-sm mt-1" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Additional Notes</label>
-              <textarea name="message" rows="4" value={formData.message} onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 text-gray-700"
-                placeholder="Tell me about your event..." />
-              <ValidationError field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
-            </div>
-
-            {/* Appointment Booking Section */}
-            <div className="border-t-2 border-primary/30 pt-6">
-              <h3 className="text-lg font-semibold text-secondary mb-4">Appointment Booking *</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input type="checkbox" name="confirmDetails" id="confirmDetails" required checked={formData.confirmDetails} onChange={handleChange}
-                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0" />
-                  <label htmlFor="confirmDetails" className="text-sm text-gray-700">I confirm my details for appointment booking</label>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input type="checkbox" name="acceptTerms" id="acceptTerms" required checked={formData.acceptTerms} onChange={handleChange}
-                    className="mt-1 w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary flex-shrink-0" />
-                  <label htmlFor="acceptTerms" className="text-sm text-gray-700">I have read & understood the terms & conditions</label>
-                </div>
-              </div>
-            </div>
-
-            <button type="submit" disabled={state.submitting}
-              className={`w-full py-4 bg-primary text-white font-bold uppercase tracking-wider rounded-lg transition-all ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-dark transform hover:scale-[1.02]'}`}>
-              {state.submitting ? 'Sending...' : 'Submit'}
-            </button>
-
-            <p className="text-xs text-gray-500 text-center">
-              By submitting you agree to: <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link> | <Link to="/terms" className="text-primary hover:underline">Terms & Conditions</Link>
-            </p>
-          </form>
+          <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-display font-bold md:text-5xl">
+            Tell me what you have in mind.
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-white/75">
+            Share a few details about your event or creative project. I’ll be in
+            touch to discuss availability, fit, and the next step.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="bg-gray-50 py-12 md:py-16">
+        <div className="container-custom">
+          <ol className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
+            {[
+              ['01', 'Share your brief', 'Tell me what you need and when.'],
+              ['02', 'Discuss the details', 'We’ll confirm fit, scope, and availability.'],
+              ['03', 'Agree next steps', 'Move forward once the details are clear.']
+            ].map(([number, title, description]) => (
+              <li key={number} className="flex gap-4">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                  {number}
+                </span>
+                <div>
+                  <h2 className="font-semibold text-secondary">{title}</h2>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                    {description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="container-custom grid gap-10 py-12 md:grid-cols-[0.7fr_1.3fr] md:py-16">
+        <aside>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            Start here
+          </p>
+          <h2 className="mt-3 text-3xl font-display font-bold text-secondary">
+            A little context helps me respond well.
+          </h2>
+          <p className="mt-4 leading-relaxed text-gray-600">
+            Choose the service you’re interested in and share your goals,
+            timeline, or any questions. This form is an enquiry, not a confirmed
+            booking; arrangements are agreed directly after we connect.
+          </p>
+          <div className="mt-8 space-y-3 border-t border-gray-200 pt-6 text-sm text-gray-600">
+            <p>
+              Prefer email?{' '}
+              <a
+                href="mailto:info@dennizoclassic.com"
+                className="font-semibold text-primary hover:underline"
+              >
+                info@dennizoclassic.com
+              </a>
+            </p>
+            <p>
+              <Link to="/contact" className="font-semibold text-primary hover:underline">
+                View contact details and social links
+              </Link>
+            </p>
+          </div>
+        </aside>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-9"
+        >
+          <div>
+            <label htmlFor="name" className="mb-2 block text-sm font-semibold text-gray-700">
+              Your name <span className="text-primary">*</span>
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              className={fieldClassName}
+              placeholder="Full name"
+            />
+            <ValidationError field="name" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <div>
+              <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700">
+                Email address <span className="text-primary">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className={fieldClassName}
+                placeholder="you@example.com"
+              />
+              <ValidationError field="email" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+            </div>
+            <div>
+              <label htmlFor="phone" className="mb-2 block text-sm font-semibold text-gray-700">
+                Phone or WhatsApp <span className="text-gray-400">(optional)</span>
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                className={fieldClassName}
+                placeholder="+254 ..."
+              />
+              <ValidationError field="phone" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="service" className="mb-2 block text-sm font-semibold text-gray-700">
+              What are you enquiring about? <span className="text-primary">*</span>
+            </label>
+            <select
+              id="service"
+              name="service"
+              required
+              value={service}
+              onChange={(event) => setService(event.target.value)}
+              className={fieldClassName}
+            >
+              <option value="">Select a service</option>
+              {serviceOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+            <ValidationError field="service" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+          </div>
+
+          {isEventEnquiry && (
+            <div className="grid gap-5 rounded-xl bg-gray-50 p-5 md:grid-cols-2">
+              <div>
+                <label htmlFor="event-date" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Event date <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="event-date"
+                  name="event_date"
+                  type="date"
+                  required
+                  className={fieldClassName}
+                />
+                <ValidationError field="event_date" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+              </div>
+              <div>
+                <label htmlFor="event-location" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Event location <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="event-location"
+                  name="event_location"
+                  type="text"
+                  required
+                  className={fieldClassName}
+                  placeholder="City or venue"
+                />
+                <ValidationError field="event_location" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+              </div>
+            </div>
+          )}
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <div>
+              <label htmlFor="timeline" className="mb-2 block text-sm font-semibold text-gray-700">
+                Preferred timeline <span className="text-gray-400">(optional)</span>
+              </label>
+              <input
+                id="timeline"
+                name="timeline"
+                type="text"
+                className={fieldClassName}
+                placeholder="e.g. March 2027 or flexible"
+              />
+            </div>
+            <div>
+              <label htmlFor="budget" className="mb-2 block text-sm font-semibold text-gray-700">
+                Budget range <span className="text-gray-400">(optional)</span>
+              </label>
+              <select id="budget" name="budget" defaultValue="" className={fieldClassName}>
+                <option value="">Prefer to discuss</option>
+                <option value="under-50000-kes">Under KES 50,000</option>
+                <option value="50000-100000-kes">KES 50,000–100,000</option>
+                <option value="100000-200000-kes">KES 100,000–200,000</option>
+                <option value="over-200000-kes">Over KES 200,000</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-semibold text-gray-700">
+              Tell me about your plans <span className="text-primary">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              className={fieldClassName}
+              placeholder="What are you working on, what support are you looking for, and what would you like to achieve?"
+            />
+            <ValidationError field="message" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+          </div>
+
+          <div className="flex items-start gap-3">
+            <input
+              id="privacy-consent"
+              name="privacy_consent"
+              type="checkbox"
+              value="I agree to be contacted about this enquiry"
+              required
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+            />
+            <label htmlFor="privacy-consent" className="text-sm leading-relaxed text-gray-600">
+              I agree to be contacted about this enquiry and understand my
+              information will be handled in line with the{' '}
+              <Link to="/privacy" className="font-semibold text-primary hover:underline">
+                Privacy Policy
+              </Link>
+              . <span className="text-primary">*</span>
+            </label>
+          </div>
+
+          {state.errors && (
+            <p role="alert" className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
+              Your enquiry could not be submitted. Please check the fields above
+              and try again, or email info@dennizoclassic.com.
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="w-full rounded-lg bg-primary px-6 py-4 font-bold text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {state.submitting ? 'Sending enquiry…' : 'Send enquiry'}
+          </button>
+          <p className="text-center text-xs text-gray-500">
+            Fields marked * are required. Submitting this form does not confirm
+            availability or create a booking.
+          </p>
+        </form>
+      </section>
+    </div>
   )
 }
 

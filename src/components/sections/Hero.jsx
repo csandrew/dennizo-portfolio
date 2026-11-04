@@ -44,10 +44,16 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
+              to="/booking"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-body font-bold uppercase tracking-wider rounded-lg hover:bg-primary-dark transition-all"
+            >
+              Enquire / Book
+            </Link>
+            <Link
               to="/music"
               className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/40 text-white font-body font-bold uppercase tracking-wider rounded-lg hover:bg-white hover:text-black transition-all"
             >
-              ▶ My Music
+              Explore my music
             </Link>
           </div>
 

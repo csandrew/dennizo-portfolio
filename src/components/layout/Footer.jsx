@@ -59,8 +59,11 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Music', href: '/music' },
+    { name: 'Services', href: '/services' },
+    { name: 'Mentorship', href: '/mentorship' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Book Now', href: '/booking' },
+    { name: 'Enquire / Book', href: '/booking' },
   ]
 
   const legalLinks = [

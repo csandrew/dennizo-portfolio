@@ -18,6 +18,8 @@ const Header = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Music', href: '/music' },
+    { name: 'Services', href: '/services' },
+    { name: 'Mentorship', href: '/mentorship' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -37,17 +39,18 @@ const Header = () => {
           </Link>
 
           {/* Centered Navigation */}
-          <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex space-x-8">
+          <div className="hidden xl:flex items-center justify-center flex-1">
+            <div className="flex space-x-5">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={`font-body text-sm font-semibold uppercase tracking-wider transition-colors ${
-                    location.pathname === item.href 
+                    location.pathname === item.href
                       ? 'text-primary' 
                       : 'text-gray-600 hover:text-primary'
                   }`}
+                  aria-current={location.pathname === item.href ? 'page' : undefined}
                 >
                   {item.name}
                 </Link>
@@ -56,19 +59,23 @@ const Header = () => {
           </div>
 
           {/* Book Me Button - Right */}
-          <div className="hidden md:block flex-shrink-0">
+          <div className="hidden xl:block flex-shrink-0">
             <Link
               to="/booking"
               className="px-6 py-2.5 bg-primary text-white font-body font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg"
             >
-              Book Now
+              Enquire / Book
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            type="button"
+            className="xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`block w-6 h-0.5 transition-all bg-primary ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -80,12 +87,15 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white py-4 shadow-lg border-t border-gray-200">
+          <div id="mobile-navigation" className="xl:hidden bg-white py-4 shadow-lg border-t border-gray-200">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="block py-2.5 px-4 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:text-primary hover:bg-gray-200 transition-colors"
+                aria-current={location.pathname === item.href ? 'page' : undefined}
+                className={`block py-2.5 px-4 text-sm font-semibold uppercase tracking-wider transition-colors hover:bg-gray-100 ${
+                  location.pathname === item.href ? 'text-primary' : 'text-gray-600 hover:text-primary'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -96,7 +106,7 @@ const Header = () => {
               className="block mx-4 mt-4 py-2.5 bg-primary text-white font-body font-bold text-sm uppercase tracking-wider rounded-lg text-center hover:bg-primary-dark transition-colors shadow-md"
               onClick={() => setIsOpen(false)}
             >
-              Book Now
+              Enquire / Book
             </Link>
           </div>
         )}

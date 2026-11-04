@@ -71,8 +71,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <span className="block font-semibold text-white">Phone</span>
-                  <a href="tel:+254700000000" className="hover:text-pink_orchid transition-colors">
-                    +254 700 000 000
+                  <a href="tel:+254715175508" className="hover:text-pink_orchid transition-colors">
+                    +254 715 175 508
                   </a>
                 </div>
               </div>
@@ -111,23 +111,23 @@ const Contact = () => {
                     Get in touch
                   </h2>
                   <p className="text-gray-600 leading-relaxed">
-                    Whether you need an MC for a wedding, corporate event, or music production, I'm here to help.
+                    For event bookings, music projects, mentorship, or collaborations, share a few details and I’ll be in touch.
                   </p>
                 </div>
 
                 <div className="grid gap-6">
                   <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
                     <h3 className="font-semibold text-lg mb-2" style={{ color: '#3C3B6E' }}>
-                      Quick Booking
+                      Start an enquiry
                     </h3>
-                    <p className="text-gray-600">Use the booking page to submit your event details and receive availability quickly.</p>
+                    <p className="text-gray-600">Tell me what you need through the enquiry form. We’ll confirm availability and next steps directly.</p>
                   </div>
 
                   <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
                     <h3 className="font-semibold text-lg mb-2" style={{ color: '#3C3B6E' }}>
-                      Need a quote?
+                      Creative collaboration
                     </h3>
-                    <p className="text-gray-600">Share your event date, size, and vision and I'll provide a custom package.</p>
+                    <p className="text-gray-600">Get in touch about music production, songwriting, coaching, direction, or another project.</p>
                   </div>
 
                   <div className="p-6 bg-gray-50 rounded-3xl border border-gray-200">
@@ -143,7 +143,13 @@ const Contact = () => {
                   className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold uppercase tracking-widest rounded-md transition-colors hover:opacity-90"
                   style={{ backgroundColor: '#B22234' }}
                 >
-                  Request a booking
+                  Send an enquiry
+                </Link>
+                <Link
+                  to="/services"
+                  className="ml-4 inline-flex items-center font-semibold text-secondary hover:text-primary"
+                >
+                  Explore services
                 </Link>
               </div>
             </div>
