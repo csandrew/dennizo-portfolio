@@ -4,6 +4,8 @@ import { useForm, ValidationError } from '@formspree/react'
 
 const serviceOptions = [
   'Event hosting',
+  'Guided campus tours',
+  'Campus performances & hosting',
   'Music production',
   'Songwriting',
   'Vocal coaching',
@@ -22,7 +24,8 @@ const Booking = () => {
   const requestedService = searchParams.get('service')
   const initialService = serviceOptions.includes(requestedService) ? requestedService : ''
   const [service, setService] = useState(initialService)
-  const isEventEnquiry = service === 'Event hosting'
+  const isCampusTour = service === 'Guided campus tours'
+  const isEventEnquiry = ['Event hosting', 'Campus performances & hosting'].includes(service)
 
   if (state.succeeded) {
     return (
@@ -204,9 +207,24 @@ const Booking = () => {
 
           {isEventEnquiry && (
             <div className="grid gap-5 rounded-xl bg-gray-50 p-5 md:grid-cols-2">
+              {service === 'Campus performances & hosting' && (
+                <div className="md:col-span-2">
+                  <label htmlFor="campus-name" className="mb-2 block text-sm font-semibold text-gray-700">
+                    Campus or institution <span className="text-primary">*</span>
+                  </label>
+                  <input
+                    id="campus-name"
+                    name="campus_name"
+                    type="text"
+                    required
+                    className={fieldClassName}
+                    placeholder="Name of campus or institution"
+                  />
+                </div>
+              )}
               <div>
                 <label htmlFor="event-date" className="mb-2 block text-sm font-semibold text-gray-700">
-                  Event date <span className="text-primary">*</span>
+                  Preferred event date <span className="text-primary">*</span>
                 </label>
                 <input
                   id="event-date"
@@ -219,7 +237,7 @@ const Booking = () => {
               </div>
               <div>
                 <label htmlFor="event-location" className="mb-2 block text-sm font-semibold text-gray-700">
-                  Event location <span className="text-primary">*</span>
+                  Campus / event location <span className="text-primary">*</span>
                 </label>
                 <input
                   id="event-location"
@@ -230,6 +248,66 @@ const Booking = () => {
                   placeholder="City or venue"
                 />
                 <ValidationError field="event_location" errors={state.errors} className="mt-1 block text-sm text-red-600" />
+              </div>
+            </div>
+          )}
+
+          {isCampusTour && (
+            <div className="grid gap-5 rounded-xl bg-gray-50 p-5 md:grid-cols-2">
+              <div>
+                <label htmlFor="tour-campus" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Campus or institution <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="tour-campus"
+                  name="campus_name"
+                  type="text"
+                  required
+                  className={fieldClassName}
+                  placeholder="Name of campus or institution"
+                />
+              </div>
+              <div>
+                <label htmlFor="tour-date" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Preferred tour date <span className="text-primary">*</span>
+                </label>
+                <input
+                  id="tour-date"
+                  name="tour_date"
+                  type="date"
+                  required
+                  className={fieldClassName}
+                />
+              </div>
+              <div>
+                <label htmlFor="tour-group-size" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Approximate group size <span className="text-gray-400">(optional)</span>
+                </label>
+                <input
+                  id="tour-group-size"
+                  name="group_size"
+                  type="number"
+                  min="1"
+                  className={fieldClassName}
+                  placeholder="Number of visitors"
+                />
+              </div>
+              <div>
+                <label htmlFor="tour-audience" className="mb-2 block text-sm font-semibold text-gray-700">
+                  Group type <span className="text-gray-400">(optional)</span>
+                </label>
+                <select
+                  id="tour-audience"
+                  name="group_type"
+                  defaultValue=""
+                  className={fieldClassName}
+                >
+                  <option value="">Select group type</option>
+                  <option value="prospective-students">Prospective students</option>
+                  <option value="school-group">School group</option>
+                  <option value="family">Family or individual visitors</option>
+                  <option value="other">Other group</option>
+                </select>
               </div>
             </div>
           )}

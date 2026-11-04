@@ -32,7 +32,7 @@ const Services = () => {
           </p>
           <h2 className="section-title text-white">Services for every event</h2>
           <p className="section-subtitle text-gray-400">
-            From weddings to corporate launches, the right host keeps your event running smooth and memorable.
+            From High school events, Campus tours, weddings to corporate launches, the right host keeps your event running smooth and memorable.
           </p>
         </motion.div>
 

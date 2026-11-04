@@ -5,17 +5,17 @@ const About = () => {
   // Make sure to replace these URLs with your actual uploaded image paths
   const showcaseItems = [
     {
-      title: 'Music & Releases',
+      title: 'Music Direction',
       description: 'Listen, watch, discover.',
       image: '/images/music-releases.jpg'
     },
     {
-      title: 'Songwriting',
+      title: 'Songwriting & Production',
       description: 'The craft behind the music.',
       image: '/images/song-writing.jpg'
     },
     {
-      title: 'Live & Events',
+      title: 'Live Events, High school & Campus tours',
       description: 'Performances and appearances.',
       image: '/images/live-events.jpg'
     },
@@ -129,9 +129,9 @@ const About = () => {
            viewport={{ once: true }}
            className="max-w-6xl mx-auto mt-24"
         >
-          <div className="mb-10">
+          {/*<div className="mb-10">
             <h2 className="text-3xl font-display text-secondary">The Craft</h2>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
             {showcaseItems.map((item, index) => (

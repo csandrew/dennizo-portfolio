@@ -25,7 +25,8 @@ const Home = () => {
             </h2>
             <p className="mt-3 leading-relaxed text-gray-600">
               Explore music production, songwriting, vocal coaching, music
-              direction, consultation, and event hosting.
+              direction, consultation, event hosting, and campus tours or
+              performances.
             </p>
             <Link
               to="/services"

@@ -37,6 +37,18 @@ const services = [
     title: 'Event hosting',
     description:
       'Create a confident, engaging atmosphere and a well-paced programme for your celebration, gathering, or special event.'
+  },
+  {
+    number: '07',
+    title: 'Mentorship',
+    description:
+      'Receive personalized guidance and support to navigate your creative journey and achieve your artistic goals.'
+  },
+  {
+    number: '08',
+    title: 'High school & Campus tours',
+    description:
+      'Bring live performance or professional event hosting to a campus programme. Share your event details to discuss the right fit.'
   }
 ]
 

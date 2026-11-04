@@ -83,7 +83,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="max-w-xs">
             <h3 className="text-3xl font-display mb-4">
-              <span className="text-white">DENNIZO</span>
+              <span className="text-white">DENNIZOCLASSIC</span>
               <span className="text-pink_orchid">.</span>
             </h3>
             <p className="text-white/60 text-sm leading-relaxed">
